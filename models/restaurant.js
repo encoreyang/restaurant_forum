@@ -10,6 +10,8 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
   Restaurant.associate = function (models) {
     // associations can be defined here
+    Restaurant.belongsTo(models.Category)
+    //撈出 restaurant 這間餐廳所屬的分類，注意此時 Category 是單數
   };
   return Restaurant;
 };
