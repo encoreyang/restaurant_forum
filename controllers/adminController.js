@@ -14,7 +14,10 @@ const adminController = {
   },
 
   creatRestaurant: (req, res) => {
-    return res.render('admin/create')
+    Category.findAll().then(categories => {
+      return res.render('admin/create', { categories: categories })
+    })
+
   },
 
   postRestaurant: (req, res) => {
@@ -34,6 +37,7 @@ const adminController = {
           opening_hours: req.body.opening_hours,
           description: req.body.description,
           image: file ? img.data.link : null,
+          CategoryId: req.body.categoryId
         }).then((restaurant) => {
           req.flash('success_messages', 'restaurant was successfully created')
           return res.redirect('/admin/restaurants')
@@ -47,7 +51,8 @@ const adminController = {
         address: req.body.address,
         opening_hours: req.body.opening_hours,
         description: req.body.description,
-        image: null
+        image: null,
+        CategoryId: req.body.categoryId
       }).then((restaurant) => {
         req.flash('success_messages', 'restaurant was successfully created')
         return res.redirect('/admin/restaurants')
@@ -65,7 +70,12 @@ const adminController = {
   //編輯資料
   editRestaurant: (req, res) => {
     return Restaurant.findByPk(req.params.id).then(restaurant => {
-      return res.render('admin/create', { restaurant: restaurant })
+      Category.findAll().then(categories => {
+        return res.render('admin/create', {
+          categories: categories,
+          restaurant: restaurant
+        })
+      })
     })
   },
   //methode版
@@ -88,6 +98,7 @@ const adminController = {
               opening_hours: req.body.opening_hours,
               description: req.body.description,
               image: file ? img.data.link : restaurant.image,
+              CategoryId: req.body.categoryId
             })
               .then((restaurant) => {
                 req.flash('success_messages', 'restaurant was successfully to update')
@@ -105,7 +116,8 @@ const adminController = {
             address: req.body.address,
             opening_hours: req.body.opening_hours,
             description: req.body.description,
-            image: restaurant.image
+            image: restaurant.image,
+            CategoryId: req.body.categoryId
           })
             .then((restaurant) => {
               req.flash('success_messages', 'restaurant was successfully to update')
