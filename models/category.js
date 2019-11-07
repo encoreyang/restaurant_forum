@@ -5,7 +5,7 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
   Category.associate = function (models) {
     // associations can be defined here
-    Category.hasmany(models.Restaurant)
+    Category.hasMany(models.Restaurant)
   };  //撈出屬於 category 這個分類的所有餐廳，注意此時 Restaurants 是複數
   return Category;
 };
