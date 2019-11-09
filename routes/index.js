@@ -37,7 +37,9 @@ module.exports = (app, passport) => {
   app.get('/admin/restaurants/:id/edit', authenticatedAdmin, adminController.editRestaurant) //進入編輯頁面
   app.put('/admin/restaurants/:id', authenticatedAdmin, upload.single('image'), adminController.putRestaurant)
   app.delete('/admin/restaurants/:id', authenticatedAdmin, adminController.deleteRestaurant)
+  //categories
   app.get('/admin/categories', authenticatedAdmin, categoryController.getCategories)
+  app.post('/admin/categories', authenticatedAdmin, categoryController.postRestaurant)
 
   app.get('/signup', userController.signUpPage)
   app.post('/signup', userController.signUp)
