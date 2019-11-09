@@ -12,6 +12,16 @@ let restController = {
         restaurants: data
       })
     })
+  },
+  //前台顯示單一餐廳
+  getRestaurant: (req, res) => {
+    return Restaurant.findByPk(req.params.id, {
+      include: Category
+    }).then(restaurant => {
+      return res.render('restaurant', {
+        restaurant: restaurant
+      })
+    })
   }
 }
 module.exports = restController
