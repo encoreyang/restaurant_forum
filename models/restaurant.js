@@ -14,5 +14,11 @@ module.exports = (sequelize, DataTypes) => {
     //撈出 restaurant 這間餐廳所屬的分類，注意此時 Category 是單數
     Restaurant.hasMany(models.Comment)
   };
+  //餐廳被很多人收藏
+  Restaurant.belongsToMany(models.User, {
+    through: models.Favorite,
+    foreignKey: 'RestaurantId',
+    as: 'FavoritedUsers'
+  })
   return Restaurant;
 };
