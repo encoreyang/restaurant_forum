@@ -54,9 +54,7 @@ const restController = {
       ]
     }).then(restaurant => {
       const isFavorited = restaurant.FavoritedUsers.map(d => d.id).includes(req.user.id)
-      return res.render('restaurant', {
-        restaurant: restaurant
-      })
+      return res.render('restaurant', { restaurant: restaurant, isFavorited: isFavorited })
     })
   },
   //最新動態

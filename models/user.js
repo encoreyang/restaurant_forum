@@ -15,6 +15,18 @@ module.exports = (sequelize, DataTypes) => {
       foreignKey: 'UserId',
       as: 'FavoritedRestaurants'
     })
+    //User的追蹤者
+    User.belongsToMany(User, {
+      through: models.Followship,
+      foreignKey: 'followingId',
+      as: 'Followers'
+    })
+    //User追蹤的User
+    User.belongsToMany(User, {
+      through: models.Followship,
+      foreignKey: 'followerId',
+      as: 'Followings'
+    })
   };
   return User;
 };
