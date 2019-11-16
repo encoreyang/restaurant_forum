@@ -12,6 +12,18 @@ const adminController = {
     // return Restaurant.findAll({ include: [Category] }).then(restaurants => {
     //   return res.json({ restaurants: restaurants })
     // })
+  },
+  deleteRestaurant: (req, res) => {
+    adminService.deleteRestaurant(req, res, (data) => {
+      return res.json(data)
+    })
+    // return Restaurant.findByPk(req.params.id)
+    //   .then((restaurant) => {
+    //     restaurant.destroy()
+    //       .then((restaurant) => {
+    //         return res.json({ status: 'success', message: '' })
+    //       })
+    //   })
   }
 }
 module.exports = adminController
