@@ -8,6 +8,7 @@ const adminController = require('../controllers/adminController.js')
 const userController = require('../controllers/userController.js')
 const categoryController = require('../controllers/catecoryController.js')
 const commentController = require('../controllers/commentController.js')
+//上傳圖片方法
 const multer = require('multer')
 const upload = multer({ dest: 'temp/' }) //上傳暫存的資料夾
 
