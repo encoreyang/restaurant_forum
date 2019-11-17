@@ -38,9 +38,13 @@ const adminController = {
   //單一筆餐廳資料
   getRestaurant: (req, res) => {
     return Restaurant.findByPk(req.params.id, { include: [Category] }).then(restaurant => {
-      return res.render('admin/restaurant', {
-        restaurant: restaurant
-      })
+      adminService.getRestaurant
+        (req, res, (data) => {
+          return res.render('admin/restaurant', data)
+        })
+      // return res.render('admin/restaurant', {
+      //   restaurant: restaurant
+      // })
     })
   },
   //編輯資料

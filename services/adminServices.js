@@ -49,7 +49,15 @@ const adminService = {
       })
     }
   },
-
+  //單一餐廳顯示
+  getRestaurant: (req, res, callback) => {
+    return Restaurant.findByPk(req.params.id, { include: [Category] }).then(restaurant => {
+      callback({ restaurant: restaurant })
+      // return res.render('admin/restaurant', {
+      //   restaurant: restaurant
+      // })
+    })
+  },
   deleteRestaurant: (req, res, callback) => {
     return Restaurant.findByPk(req.params.id)
       .then((restaurant) => {
