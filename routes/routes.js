@@ -56,6 +56,7 @@ router.get('/admin/restaurants/:id', authenticatedAdmin, adminController.getRest
 router.get('/admin/restaurants/:id/edit', authenticatedAdmin, adminController.editRestaurant) //進入編輯頁面
 router.put('/admin/restaurants/:id', authenticatedAdmin, upload.single('image'), adminController.putRestaurant)
 router.delete('/admin/restaurants/:id', authenticatedAdmin, adminController.deleteRestaurant)
+
 //categories
 router.get('/admin/categories', authenticatedAdmin, categoryController.getCategories)
 router.post('/admin/categories', authenticatedAdmin, categoryController.postCategory)
